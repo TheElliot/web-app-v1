@@ -1,0 +1,48 @@
+/* web-app.css CSS */
+
+/* don't forget to validate at https://jigsaw.w3.org/css-validator/ */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
+
+body {
+  background-color: #ffffcc;
+  font-size: 16px;
+  height: 100vh; /* make the "page" the full height */
+  color: #333333;
+}
+
+.web-app {
+  margin:  0 1em;
+
+}
+
+#page-title {
+  font-family: 'Oswald', sans-serif;
+  color:  #ff0000;
+  font-size:  4em;
+  background:  url('images/work.jpg');
+  background-size: cover;
+  height:  6em;
+  text-align:  center;
+  padding-top: 3em;
+
+}
+
+#page-description {
+  font-size:  3em;
+}
+
+.todo-item {
+  font-size:  2em;
+}
+
+#todo-items {
+  display:  none;
+}
+
+#add-item {
+  font-size:  3em;
+}
+
+
