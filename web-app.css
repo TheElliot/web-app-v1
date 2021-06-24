@@ -33,12 +33,12 @@ body {
   font-size:  3em;
 }
 
-.todo-item {
-  font-size:  2em;
+#todo-items {
+  padding-bottom: 3em;
 }
 
-#todo-items {
-  display:  none;
+#todo-items > li {
+  font-size:  2em;
 }
 
 #add-item {
