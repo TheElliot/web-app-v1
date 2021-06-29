@@ -29,19 +29,16 @@
         return document.getElementById(element);
     }
 
-
     function addItem(item) {
         const list_item = document.createElement("li");
         const node = document.createTextNode(item);
         list_item.appendChild(node);
-        const element = document.getElementById("todo-items");
-        element.appendChild(list_item);
+        byID("todo-items").appendChild(list_item);
     }
 
     function submitItem() {
         const item_value = byID("add-item").value;
         addItem(item_value);
-
     }
 
     byID("item-submit").addEventListener("click", submitItem);

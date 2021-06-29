@@ -14,7 +14,11 @@ body {
 
 .web-app {
   margin:  0 1em;
-
+  display:  grid;
+  grid-template:
+    'pageTitle pageTitle'
+    'listHeader listForm';
+  grid-gap: 1em;
 }
 
 #page-title {
@@ -26,12 +30,25 @@ body {
   height:  6em;
   text-align:  center;
   padding-top: 3em;
-
+  grid-area: pageTitle;
 }
 
 #page-description {
   font-size:  3em;
 }
+
+img {
+  max-width:  100%;
+}
+
+#list-header {
+  grid-area: listHeader;
+}
+
+#list-form {
+  grid-area: listForm;
+}
+
 
 #todo-items {
   padding-bottom: 3em;
