@@ -16,8 +16,10 @@ body {
   margin:  0 1em;
   display:  grid;
   grid-template:
-    'pageTitle pageTitle'
-    'listHeader listForm';
+    'pageTitle'
+    'pageTitle'
+    'listHeader'
+    'listForm';
   grid-gap: 1em;
 }
 
@@ -43,6 +45,7 @@ img {
 
 #list-header {
   grid-area: listHeader;
+  display: none;
 }
 
 #list-form {
@@ -60,6 +63,20 @@ img {
 
 #add-item {
   font-size:  3em;
+}
+
+@media only screen and (min-width: 1024px) {
+  .web-app {
+    margin:  0 1em;
+    grid-template:
+      'pageTitle pageTitle'
+      'listHeader listForm';
+    grid-gap: 1em;
+  }
+  
+  #list-header {
+    display: block;
+  }
 }
 
 
