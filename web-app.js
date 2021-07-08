@@ -100,5 +100,6 @@
 
     byID("item-submit").addEventListener("click", submitItem);
     byID("add-item").addEventListener("focus", clearAddField);
+    byID("add-item").focus();
 
 }());

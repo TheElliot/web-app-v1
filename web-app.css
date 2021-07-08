@@ -17,21 +17,19 @@ body {
   display:  grid;
   grid-template:
     'pageTitle'
-    'pageTitle'
-    'listHeader'
-    'listForm';
+    'listForm'
+    'itemList';
   grid-gap: 1em;
 }
 
 #page-title {
   font-family: 'Oswald', sans-serif;
-  color:  #ff0000;
-  font-size:  4em;
-  background:  url('images/work.jpg');
+  color:  #ffffcc;
+  font-size:  10vw;
+  padding:  1em 0;
+  background:  url('images/header.jpg');
   background-size: cover;
-  height:  6em;
   text-align:  center;
-  padding-top: 3em;
   grid-area: pageTitle;
 }
 
@@ -43,9 +41,8 @@ img {
   max-width:  100%;
 }
 
-#list-header {
-  grid-area: listHeader;
-  display: none;
+#todo-items {
+  grid-area: itemList;
 }
 
 #list-form {
@@ -54,11 +51,20 @@ img {
 
 
 #todo-items {
-  padding-bottom: 3em;
+  padding: 0 0 3em 0;
+  list-style-type: none;
 }
 
 #todo-items > li {
   font-size:  2em;
+  background-color: #02bf14;
+  color:  #ffffff;
+  padding:  0.5em;
+  margin-bottom:  2px;
+}
+
+#todo-items > li > button {
+  margin-left: 2em;
 }
 
 #add-item {
@@ -70,13 +76,16 @@ img {
     margin:  0 1em;
     grid-template:
       'pageTitle pageTitle'
-      'listHeader listForm';
+      'itemList listForm';
     grid-gap: 1em;
   }
-  
-  #list-header {
-    display: block;
+
+  #page-title {
+    font-size:  10vw;
+    padding:  1em 0;
   }
+  #todo-items {
+    width:  50vw;
 }
 
 
