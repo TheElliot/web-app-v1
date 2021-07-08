@@ -17,8 +17,7 @@
     // === === === ===      begin here     === === === ===
     // === === === === === === === === === === === === ===
 
-    const items = [];
-   
+    let items = [];
 
     // === === === === === === === === === === === === ===
     // === === === ===   global functions  === === === ===
@@ -30,17 +29,39 @@
         return document.getElementById(element);
     }
 
+    function createByName(name) {
+        return document.createElement(name);
+    }
+
+    function createNode(element) {
+        return document.createTextNode(element);
+    }
+
+    function deleteItem(event) {
+        const button_id = event.srcElement.id;
+        const list_item = button_id.replace("delete-button-", "todo-item-");
+        const index = button_id.replace("delete-button-", "");
+        byID(button_id).removeEventListener("click", deleteItem);
+        byID(button_id).remove();
+        byID(list_item).remove();
+        items.splice(index, 1);
+    }
+
     function printItem(item, index) {
-        const list_item = document.createElement("li");
-        const list_node = document.createTextNode(item);
+        const list_item = createByName("li");
+        const list_node = createNode(item);
         list_item.appendChild(list_node);
         byID("todo-items").appendChild(list_item);
+        const list_item_id = "todo-item-" + index;
+        list_item.setAttribute("id", list_item_id);
 
-        const delete_button = document.createElement("button");
-        const button_node = document.createTextNode("delete");
+        const delete_button = createByName("button");
+        const button_node = createNode("delete");
         delete_button.appendChild(button_node);
         list_item.appendChild(delete_button);
-        delete_button.setAttribute("id","delete-button-" + index);
+        const button_id = "delete-button-" + index;
+        delete_button.setAttribute("id", button_id);
+        byID(button_id).addEventListener("click", deleteItem);
     }
 
     function submitItem() {
@@ -50,7 +71,11 @@
         items.forEach(printItem);
     }
 
+    function clearAddField() {
+        byID("add-item").value = "";
+    }
+
     byID("item-submit").addEventListener("click", submitItem);
- 
+    byID("add-item").addEventListener("focus", clearAddField);
 
 }());
