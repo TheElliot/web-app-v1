@@ -6,7 +6,7 @@
 // self-executing "global" anonymous function
 // it's here to keep variable and function scope
 // contained within our script
-(function () {
+(function() {
 
     // use strict enforces more rules
     // rules make us better programmers
@@ -37,6 +37,24 @@
         return document.createTextNode(element);
     }
 
+    function writeLocalStorage() {
+        try {
+            const raw_storage = JSON.stringify(items);
+            localStorage.setItem("items", raw_storage);
+        } catch (error) {
+            console.log("localStorage SetItem Error:" + error);
+        }
+    }
+
+    function readLocalStorage() {
+        try {
+            const raw_storage = localStorage.getItem("items");
+            items = JSON.parse(raw_storage) ?? items;
+        } catch (error) {
+            console.log("localStorage GetItem Error:" + error);
+        }
+    }
+
     function deleteItem(event) {
         const button_id = event.srcElement.id;
         const list_item = button_id.replace("delete-button-", "todo-item-");
@@ -45,6 +63,7 @@
         byID(button_id).remove();
         byID(list_item).remove();
         items.splice(index, 1);
+        writeLocalStorage();
     }
 
     function printItem(item, index) {
@@ -69,11 +88,15 @@
         items.push(item_value);
         byID("todo-items").innerHTML = "";
         items.forEach(printItem);
+        writeLocalStorage();
     }
 
     function clearAddField() {
         byID("add-item").value = "";
     }
+
+    readLocalStorage();
+    items.forEach(printItem);
 
     byID("item-submit").addEventListener("click", submitItem);
     byID("add-item").addEventListener("focus", clearAddField);
